@@ -5,6 +5,23 @@
     //get the context of the drawing pane
         nocContext = nocCanvas.getContext("2d");
     
+    function findPos(element) {
+      if (element) {
+        var parentPos = findPos(element.offsetParent);
+        return {
+          X:parentPos.X + element.offsetLeft,
+          Y:parentPos.Y + element.offsetTop
+        };
+      } else {
+        return {X:0,Y:0};
+      }
+    }
+    
+    //set the location of the mouse as a difference based on the mid point lines of the canvas
+    function setMouseLocation(x, y) {
+        
+    }
+    
     //define a Walker object
     var Walker = function (x, y, context, trail) {
         //if trail is undefined then set to false
@@ -79,4 +96,4 @@
     setInterval(Walker.moveAll, 33);
     
     window.genWalkers = generateWalkers;
-})();
+})();    
